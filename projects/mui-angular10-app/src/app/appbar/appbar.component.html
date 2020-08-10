@@ -1,49 +1,44 @@
-<div class="mui-container-fluid">
-    <div class="mui-row">
-      <div class="mui-col-sm-10 mui-col-sm-offset-1">
-  
-        <h1>Angular Appbar - READY FOR REVIEW</h1>
-        <div id="carbonads-wrapper"></div>
-  
-        <h2>Container Element</h2>
-        <p>MUI provies a simple <code>&lt;mui-appbar&gt;</code> directive that automatically adjusts its height based on
-          the viewport dimensions:</p>
-        <ul>
-          <li>48px (phone landscape)</li>
-          <li>56px (phone portrait)</li>
-          <li>64px (default)</li>
-        </ul>
-  
-        <div class="mui-panel">
-          <!-- begin embedded angular example -->
-          <div id="example-appbar">
-            <mui-appbar></mui-appbar>
-          </div>
-          <!-- end embedded angular example -->
-  
+<mui-container fluid>
+  <mui-row>
+    <mui-col sm="10" sm-offset="1">
+
+      <h2>Container Element</h2>
+      <p>MUI provies a simple <code>&lt;mui-appbar&gt;</code> directive that automatically adjusts its height based on
+        the viewport dimensions:</p>
+      <ul>
+        <li>48px (phone landscape)</li>
+        <li>56px (phone portrait)</li>
+        <li>64px (default)</li>
+      </ul>
+
+      <mui-panel>
+        <!-- begin embedded angular example -->
+        <div id="example-appbar">
+          <mui-appbar></mui-appbar>
         </div>
-  
-        <h2>Helpers</h2>
-        <p>MUI also provides several helper classes that are useful for sharing the appbar height with other elements:</p>
-        <ul>
-          <li><code class="varname">.mui--appbar-height</code> (sets height property)</li>
-          <li><code class="varname">.mui--appbar-min-height</code> (sets min-height property)</li>
-          <li><code class="varname">.mui--appbar-line-height</code> (sets line-height property)</li>
-        </ul>
-        <p>Height helpers are useful for centering appbar content:</p>
-  
-        <div class="mui-panel">
-          <!-- begin embedded angular example -->
-          <mui-appbar>
-            <table width="100%">
-              <tr style="vertical-align: middle;">
-                <td class="mui--appbar-height">Left side</td>
-                <td class="mui--appbar-height" style="text-align: right;">Right side</td>
-              </tr>
-            </table>
-          </mui-appbar>
-  
-        </div>
-      </div>
-    </div>
-  </div>
+        <!-- end embedded angular example -->
+      </mui-panel>
+
+      <h2>Helpers</h2>
+      <p>MUI also provides several helper classes that are useful for sharing the appbar height with other elements:</p>
+      <ul>
+        <li><code class="varname">.mui--appbar-height</code> (sets height property)</li>
+        <li><code class="varname">.mui--appbar-min-height</code> (sets min-height property)</li>
+        <li><code class="varname">.mui--appbar-line-height</code> (sets line-height property)</li>
+      </ul>
+      <p>Height helpers are useful for centering appbar content:</p>
+
+      <mui-panel>
+        <!-- begin embedded angular example -->
+        <mui-appbar>
+          <table width="100%">
+            <tr style="vertical-align: middle;">
+              <td class="mui--appbar-height">Left side</td>
+              <td class="mui--appbar-height" style="text-align: right;">Right side</td>
+            </tr>
+          </table>
+        </mui-appbar>
+      </mui-panel>
+    </mui-col>
+  </mui-row>
+</mui-container>
