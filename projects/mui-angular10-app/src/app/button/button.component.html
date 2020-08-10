@@ -1,159 +1,131 @@
-<div class="mui-container-fluid">
-    <div class="mui-row">
-      <div class="mui-col-sm-10 mui-col-sm-offset-1">
-        <h1>Angular Buttons - IN PROCESS</h1>
-  
-        <p>Use <code>&lt;mui-button&gt;</code> elements to add MUI-style buttons. Note that all
-          <code>&lt;mui-button&gt;</code> elements trigger a ripple effect when clicked.</p>
-  
-        <h2>Default buttons</h2>
-  
-        <div class="mui-panel">
-          <!-- begin embedded angular example -->
-          <div id="example-buttons-default">
-            <div>
-              <mui-button>button</mui-button>
-              <mui-button color="primary">button</mui-button>
-              <mui-button color="danger">button</mui-button>
-              <mui-button color="accent">button</mui-button>
-            </div>
-            <div>
-              <mui-button [disabled]="true" >button</mui-button>
-              <mui-button [disabled]="true" color="primary" >button</mui-button>
-              <mui-button [disabled]="true" color="danger" >button</mui-button>
-              <mui-button [disabled]="true" color="accent" >button</mui-button>
-            </div>
-  
+<mui-container fluid>
+  <mui-row>
+    <mui-col sm="10" sm-offset="1">
+      <h1>Angular Buttons</h1>
+
+      <p>Use <code>&lt;mui-button&gt;</code> elements to add MUI-style buttons. Note that all
+        <code>&lt;mui-button&gt;</code> elements trigger a ripple effect when clicked.</p>
+
+      <h2>Default buttons</h2>
+      <mui-panel>
+        <!-- begin embedded angular example -->
+        <div id="example-buttons-default">
+          <div>
+            <mui-button>button</mui-button>
+            <mui-button color="primary">button</mui-button>
+            <mui-button color="danger">button</mui-button>
+            <mui-button color="accent">button</mui-button>
           </div>
-          <!-- end embedded angular example -->
-  
-        </div>
-  
-        <h2>Event buttons</h2>
-  
-        <div class="mui-panel">
-          <!-- begin embedded angular example -->
-          <div id="example-buttons-event">
-            <div>
-              <mui-button (muiClick)="onClick($event)">click</mui-button>
-              <mui-button (muiClick)="onClick($event)" color="primary">click</mui-button>
-              <mui-button (muiClick)="onClick($event)" color="danger">click</mui-button>
-              <mui-button (muiClick)="onClick($event)" color="accent">click</mui-button>
-            </div>
-            <div>
-              <mui-button [disabled]="true" (muiClick)="onClick($event)">click</mui-button>
-              <mui-button [disabled]="true" (muiClick)="onClick($event)" color="primary" >click</mui-button>
-              <mui-button [disabled]="true" (muiClick)="onClick($event)" color="danger" >click</mui-button>
-              <mui-button [disabled]="true" (muiClick)="onClick($event)" color="accent" >click</mui-button>
-            </div>
-  
+          <div>
+            <mui-button [disabled]="true">button</mui-button>
+            <mui-button [disabled]="true" color="primary">button</mui-button>
+            <mui-button [disabled]="true" color="danger">button</mui-button>
+            <mui-button [disabled]="true" color="accent">button</mui-button>
           </div>
-          <!-- end embedded angular example -->
-  
         </div>
-  
-        <h2>Flat buttons</h2>
-  
-        <div class="mui-panel">
-          <!-- begin embedded angular example -->
-          <div id="example-buttons-flat">
-            <div>
-              <mui-button variant="flat">button</mui-button>
-              <mui-button variant="flat" color="primary">button</mui-button>
-              <mui-button variant="flat" color="danger">button</mui-button>
-              <mui-button variant="flat" color="accent">button</mui-button>
-            </div>
-            <div>
-              <mui-button [disabled]="true" variant="flat">button</mui-button>
-              <mui-button [disabled]="true" variant="flat" color="primary" disabled>button</mui-button>
-              <mui-button [disabled]="true" variant="flat" color="danger" disabled>button</mui-button>
-              <mui-button [disabled]="true" variant="flat" color="accent" disabled>button</mui-button>
-            </div>
-  
+      </mui-panel>
+
+      <h2>Event buttons</h2>
+      <mui-panel>
+        <!-- begin embedded angular example -->
+        <div id="example-buttons-event">
+          <div>
+            <mui-button (muiClick)="onClick($event)">click</mui-button>
+            <mui-button (muiClick)="onClick($event)" color="primary">click</mui-button>
+            <mui-button (muiClick)="onClick($event)" color="danger">click</mui-button>
+            <mui-button (muiClick)="onClick($event)" color="accent">click</mui-button>
           </div>
-          <!-- end embedded angular example -->
-  
-        </div>
-  
-        <h2>Raised buttons</h2>
-  
-        <div class="mui-panel">
-          <!-- begin embedded angular example -->
-          <div id="example-buttons-raised">
-            <div>
-              <mui-button variant="raised">button</mui-button>
-              <mui-button variant="raised" color="primary">button</mui-button>
-              <mui-button variant="raised" color="danger">button</mui-button>
-              <mui-button variant="raised" color="accent">button</mui-button>
-            </div>
-            <div>
-              <mui-button [disabled]="true" variant="raised">button</mui-button>
-              <mui-button [disabled]="true" variant="raised" color="primary" disabled>button</mui-button>
-              <mui-button [disabled]="true" variant="raised" color="danger" disabled>button</mui-button>
-              <mui-button [disabled]="true" variant="raised" color="accent" disabled>button</mui-button>
-            </div>
-  
+          <div>
+            <mui-button [disabled]="true" (muiClick)="onClick($event)">click</mui-button>
+            <mui-button [disabled]="true" (muiClick)="onClick($event)" color="primary">click</mui-button>
+            <mui-button [disabled]="true" (muiClick)="onClick($event)" color="danger">click</mui-button>
+            <mui-button [disabled]="true" (muiClick)="onClick($event)" color="accent">click</mui-button>
           </div>
-          <!-- end embedded angular example -->
-  
         </div>
-  
-  
-        <h2>Floating action buttons</h2>
-  
-        <div class="mui-panel">
-          <!-- begin embedded angular example -->
-          <div id="example-buttons-fab">
-            <div>
-              <mui-button variant="fab">+</mui-button>
-              <mui-button variant="fab" color="primary">+</mui-button>
-              <mui-button variant="fab" color="danger">+</mui-button>
-              <mui-button variant="fab" color="accent">+</mui-button>
-            </div>
-            <div>
-              <mui-button [disabled]="true" variant="fab">+</mui-button>
-              <mui-button [disabled]="true" variant="fab" color="primary">+</mui-button>
-              <mui-button [disabled]="true" variant="fab" color="danger">+</mui-button>
-              <mui-button [disabled]="true" variant="fab" color="accent">+</mui-button>
-            </div>
-  
+      </mui-panel>
+
+      <h2>Flat buttons</h2>
+      <mui-panel>
+        <!-- begin embedded angular example -->
+        <div id="example-buttons-flat">
+          <div>
+            <mui-button variant="flat">button</mui-button>
+            <mui-button variant="flat" color="primary">button</mui-button>
+            <mui-button variant="flat" color="danger">button</mui-button>
+            <mui-button variant="flat" color="accent">button</mui-button>
           </div>
-          <!-- end embedded angular example -->
-  
-        </div>
-  
-  
-  
-        <h2>Button sizes</h2>
-  
-        <div class="mui-panel">
-          <!-- begin embedded angular example -->
-          <div id="example-buttons-sizes">
-            <div>
-              <mui-button size="small" color="primary">button</mui-button>
-              <mui-button size="small" color="primary" variant="flat">button</mui-button>
-              <mui-button size="small" color="primary" variant="raised">button</mui-button>
-              <mui-button size="small" color="primary" variant="fab">+</mui-button>
-            </div>
-            <div>
-              <mui-button color="primary">button</mui-button>
-              <mui-button color="primary" variant="flat">button</mui-button>
-              <mui-button color="primary" variant="raised">button</mui-button>
-              <mui-button color="primary" variant="fab">+</mui-button>
-            </div>
-            <div>
-              <mui-button size="large" color="primary">button</mui-button>
-              <mui-button size="large" color="primary" variant="flat">button</mui-button>
-              <mui-button size="large" color="primary" variant="raised">button</mui-button>
-              <mui-button size="large" color="primary" variant="fab">+</mui-button>
-            </div>
-  
+          <div>
+            <mui-button [disabled]="true" variant="flat">button</mui-button>
+            <mui-button [disabled]="true" variant="flat" color="primary" disabled>button</mui-button>
+            <mui-button [disabled]="true" variant="flat" color="danger" disabled>button</mui-button>
+            <mui-button [disabled]="true" variant="flat" color="accent" disabled>button</mui-button>
           </div>
-          <!-- end embedded angular example -->
-  
         </div>
-        
-      </div>
-    </div>
-    
-  </div>
+      </mui-panel>
+
+      <h2>Raised buttons</h2>
+      <mui-panel>
+        <!-- begin embedded angular example -->
+        <div id="example-buttons-raised">
+          <div>
+            <mui-button variant="raised">button</mui-button>
+            <mui-button variant="raised" color="primary">button</mui-button>
+            <mui-button variant="raised" color="danger">button</mui-button>
+            <mui-button variant="raised" color="accent">button</mui-button>
+          </div>
+          <div>
+            <mui-button [disabled]="true" variant="raised">button</mui-button>
+            <mui-button [disabled]="true" variant="raised" color="primary" disabled>button</mui-button>
+            <mui-button [disabled]="true" variant="raised" color="danger" disabled>button</mui-button>
+            <mui-button [disabled]="true" variant="raised" color="accent" disabled>button</mui-button>
+          </div>
+
+        </div>
+      </mui-panel>
+
+      <h2>Floating action buttons</h2>
+      <mui-panel>
+        <!-- begin embedded angular example -->
+        <div id="example-buttons-fab">
+          <div>
+            <mui-button variant="fab">+</mui-button>
+            <mui-button variant="fab" color="primary">+</mui-button>
+            <mui-button variant="fab" color="danger">+</mui-button>
+            <mui-button variant="fab" color="accent">+</mui-button>
+          </div>
+          <div>
+            <mui-button [disabled]="true" variant="fab">+</mui-button>
+            <mui-button [disabled]="true" variant="fab" color="primary">+</mui-button>
+            <mui-button [disabled]="true" variant="fab" color="danger">+</mui-button>
+            <mui-button [disabled]="true" variant="fab" color="accent">+</mui-button>
+          </div>
+        </div>
+      </mui-panel>
+
+      <h2>Button sizes</h2>
+      <mui-panel>
+        <!-- begin embedded angular example -->
+        <div id="example-buttons-sizes">
+          <div>
+            <mui-button size="small" color="primary">button</mui-button>
+            <mui-button size="small" color="primary" variant="flat">button</mui-button>
+            <mui-button size="small" color="primary" variant="raised">button</mui-button>
+            <mui-button size="small" color="primary" variant="fab">+</mui-button>
+          </div>
+          <div>
+            <mui-button color="primary">button</mui-button>
+            <mui-button color="primary" variant="flat">button</mui-button>
+            <mui-button color="primary" variant="raised">button</mui-button>
+            <mui-button color="primary" variant="fab">+</mui-button>
+          </div>
+          <div>
+            <mui-button size="large" color="primary">button</mui-button>
+            <mui-button size="large" color="primary" variant="flat">button</mui-button>
+            <mui-button size="large" color="primary" variant="raised">button</mui-button>
+            <mui-button size="large" color="primary" variant="fab">+</mui-button>
+          </div>
+        </div>
+      </mui-panel>
+    </mui-col>
+  </mui-row>
+</mui-container>
