@@ -64,7 +64,8 @@
               "projects/mui-angular10-app/src/assets"
             ],
             "styles": [
-              "projects/mui-angular10-app/src/styles.css"
+              "projects/mui-angular10-app/src/styles.css",
+              "dist/mui-angular10-lib/assets/styles/mui.css"
             ],
             "scripts": []
           },
@@ -128,7 +129,8 @@
               "projects/mui-angular10-app/src/assets"
             ],
             "styles": [
-              "projects/mui-angular10-app/src/styles.css"
+              "projects/mui-angular10-app/src/styles.css",
+              "dist/mui-angular10-lib/assets/styles/mui.css"
             ],
             "scripts": []
           }
