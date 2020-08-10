@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@a
 
 @Component({
   selector: 'mui-button',
-  template: `<button mui-ripple class={{class}} (click)='handleClick($event)' [disabled]="disabled"><ng-content></ng-content></button>`,
+  template: `<button muiRipple class={{class}} (click)='handleClick($event)' [disabled]="disabled"><ng-content></ng-content></button>`,
   styles: [`
   .mui-btn {
     font-weight: 500;
