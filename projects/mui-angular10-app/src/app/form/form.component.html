@@ -1,4 +1,4 @@
-<div class="mui-container-fluid">
+<mui-container fluid>
   <h2>Basic example</h2>
   <p>Use <code>&lt;mui-input&gt;</code> and <code>&lt;mui-textarea&gt;</code> elements to use MUI styling:</p>
   <mui-panel>
@@ -104,28 +104,28 @@
     default
     &lt;select&gt; menu UI on mobile interfaces.</p>
 
-    <mui-panel>
-      <mui-form [formGroup]="selectForm" (ngSubmit)="onSubmit()">
-        <mui-select label="Required Select Field" placeholder="Please select an option" formControlName="inputA">
-          <mui-option value="option-1" label="Option1"></mui-option>
-          <mui-option value="option-2" label="Option2 - disabled" disabled="true"></mui-option>
-          <mui-option value="option-3" label="Option3"></mui-option>
-          <mui-option value="option-4" label="Option4"></mui-option>
-        </mui-select>
-        <mui-select label="Default Selected" formControlName="inputB" useDefault="true">
-          <mui-option value="option-1" label="Option 1"></mui-option>
-          <mui-option value="option-2" label="Option 2"></mui-option>
-          <mui-option value="option-3" label="Option 3"></mui-option>
-          <mui-option value="option-4" label="Option 4"></mui-option>
-        </mui-select>
-      </mui-form>
-      <p>
-        Form Value: {{ selectForm.value | json }}
-      </p>
-      <p>
-        Form Status: {{ selectForm.status }}
-      </p>
-    </mui-panel>
+  <mui-panel>
+    <mui-form [formGroup]="selectForm" (ngSubmit)="onSubmit()">
+      <mui-select label="Required Select Field" placeholder="Please select an option" formControlName="inputA">
+        <mui-option value="option-1" label="Option1"></mui-option>
+        <mui-option value="option-2" label="Option2 - disabled" disabled="true"></mui-option>
+        <mui-option value="option-3" label="Option3"></mui-option>
+        <mui-option value="option-4" label="Option4"></mui-option>
+      </mui-select>
+      <mui-select label="Default Selected" formControlName="inputB" useDefault="true">
+        <mui-option value="option-1" label="Option 1"></mui-option>
+        <mui-option value="option-2" label="Option 2"></mui-option>
+        <mui-option value="option-3" label="Option 3"></mui-option>
+        <mui-option value="option-4" label="Option 4"></mui-option>
+      </mui-select>
+    </mui-form>
+    <p>
+      Form Value: {{ selectForm.value | json }}
+    </p>
+    <p>
+      Form Status: {{ selectForm.status }}
+    </p>
+  </mui-panel>
   <h2>Form validation</h2>
   <p>Use <code>required</code> and <code>&lt;mui-input type="email|url|tel"&gt;</code> to take advantage of built-in
     HTML5
@@ -152,11 +152,11 @@
   </mui-panel>
 
   <h2>To Do</h2>
-  <div class="mui-panel">
+  <mui-panel>
     <ul>
       <li>Floating label does not stay in position after text is entered</li>
       <li>Implement drop-down</li>
     </ul>
 
-  </div>
-</div>
+  </mui-panel>
+</mui-container>
