@@ -2,7 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@a
 
 @Component({
   selector: 'mui-button',
-  template: `<button muiRipple class={{class}} (click)='handleClick($event)' [disabled]="disabled"><ng-content></ng-content></button>`,
+  template: `<button muiRipple class={{class}} (click)='handleClick($event)' [disabled]="disabled">
+      <ng-content></ng-content>
+      </button>`,
   styles: [`
   .mui-btn {
     font-weight: 500;
@@ -322,6 +324,79 @@ import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@a
     height: 75px;
     line-height: 75px;
   }
+
+  /* modified by jrogers - not using at this time */
+  .mui-btn__ripple-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+  }
+  /* modified by jrogers */
+  .mui-ripple {
+    position: absolute; 
+    border-radius: 50%; 
+    /* To make it round */
+    background-color: #FFF;
+    animation: ripple 1s; 
+    opacity: 0; 
+  }
+  
+  /* modified by jrogers - Add animation */
+  @keyframes ripple { 
+      from { 
+          opacity: 0.3; 
+          transform: scale(0); 
+      } 
+
+      to { 
+          opacity: 0; 
+          transform: scale(10); 
+      } 
+
+      
+.mui-ripple.mui--is-animating {
+  -webkit-transform: none;
+  transform: none;
+  -webkit-transition: width 0.3s cubic-bezier(0, 0, 0.2, 1), height 0.3s cubic-bezier(0, 0, 0.2, 1), opacity 0.3s cubic-bezier(0, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0, 0, 0.2, 1);
+  transition: width 0.3s cubic-bezier(0, 0, 0.2, 1), height 0.3s cubic-bezier(0, 0, 0.2, 1), opacity 0.3s cubic-bezier(0, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0, 0, 0.2, 1), width 0.3s cubic-bezier(0, 0, 0.2, 1), height 0.3s cubic-bezier(0, 0, 0.2, 1), opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0, 0, 0.2, 1), width 0.3s cubic-bezier(0, 0, 0.2, 1), height 0.3s cubic-bezier(0, 0, 0.2, 1), opacity 0.3s cubic-bezier(0, 0, 0.2, 1), -webkit-transform 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.mui-ripple.mui--is-visible {
+  opacity: 0.3;
+}
+
+.mui-btn .mui-ripple {
+  background-color: #a6a6a6;
+}
+
+.mui-btn--primary .mui-ripple {
+  background-color: #FFF;
+}
+
+.mui-btn--dark .mui-ripple {
+  background-color: #FFF;
+}
+
+.mui-btn--danger .mui-ripple {
+  background-color: #FFF;
+}
+
+.mui-btn--accent .mui-ripple {
+  background-color: #FFF;
+}
+
+.mui-btn--flat .mui-ripple {
+  background-color: #a6a6a6;
+}
+
   `
   ]
 })
