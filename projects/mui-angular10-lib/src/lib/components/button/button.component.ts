@@ -342,7 +342,7 @@ import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@a
     position: absolute; 
     border-radius: 50%; 
     /* To make it round */
-    background-color: #FFF;
+    background-color: rgba(0, 0, 0, 0.3); 
     animation: ripple 1s; 
     opacity: 0; 
   }
@@ -350,7 +350,7 @@ import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@a
   /* modified by jrogers - Add animation */
   @keyframes ripple { 
       from { 
-          opacity: 0.3; 
+          opacity: 1; 
           transform: scale(0); 
       } 
 
