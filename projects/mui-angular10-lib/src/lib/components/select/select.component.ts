@@ -334,7 +334,6 @@ export class MuiSelectComponent extends ControlValueAccessorConnector implements
 
         // open the dropdown
         this.isOpen = open;
-
       }
 
     } else {
