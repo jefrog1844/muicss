@@ -230,12 +230,12 @@ export class MuiSelectComponent extends ControlValueAccessorConnector implements
   }
 
   ngOnInit() {
-    if(this.useDefault) {
-      this.renderer.setAttribute(this.selectTarget.nativeElement,'tabindex','0');
-      this.renderer.setAttribute(this.wrapperTarget.nativeElement,'tabindex','-1');
+    if (this.useDefault) {
+      this.renderer.setAttribute(this.selectTarget.nativeElement, 'tabindex', '0');
+      this.renderer.setAttribute(this.wrapperTarget.nativeElement, 'tabindex', '-1');
     } else {
-      this.renderer.setAttribute(this.selectTarget.nativeElement,'tabindex','-1');
-      this.renderer.setAttribute(this.wrapperTarget.nativeElement,'tabindex','0');
+      this.renderer.setAttribute(this.selectTarget.nativeElement, 'tabindex', '-1');
+      this.renderer.setAttribute(this.wrapperTarget.nativeElement, 'tabindex', '0');
     }
   }
   ngAfterViewInit() {
@@ -326,9 +326,9 @@ export class MuiSelectComponent extends ControlValueAccessorConnector implements
     this.keyManager.setActiveItem(this.selectedIndex);
 
     if (!this.isOpen) {
-
+      
       // spacebar, down, up
-      if (keyCode === SPACE || keyCode === DOWN_ARROW || keyCode === UP_ARROW) {
+      if ([SPACE, DOWN_ARROW, UP_ARROW, RIGHT_ARROW, LEFT_ARROW].indexOf(keyCode) > -1) {
         // prevent win scroll
         event.preventDefault();
 
@@ -340,20 +340,14 @@ export class MuiSelectComponent extends ControlValueAccessorConnector implements
     } else {
 
       // spacebar | escape | up | down | enter - prevent default dropdown from showing
-      if (keyCode === SPACE
-        || keyCode === ESCAPE
-        || keyCode === UP_ARROW
-        || keyCode === DOWN_ARROW
-        || keyCode === LEFT_ARROW
-        || keyCode === RIGHT_ARROW
-        || keyCode === ENTER) {
+      if ([SPACE, ESCAPE, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, ENTER].indexOf(keyCode) > -1) {
         event.preventDefault();
       }
 
       if (keyCode === ESCAPE || keyCode === TAB) {
         this.isOpen = false;
         this.setIndex();
-      } else if (keyCode === ENTER) {
+      } else if (keyCode === ENTER || keyCode === SPACE) {
         this.selectOption(this.keyManager.activeItem);
       } else {
         this.keyManager.onKeydown(event);
