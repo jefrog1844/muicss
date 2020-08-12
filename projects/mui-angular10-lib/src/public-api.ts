@@ -16,6 +16,7 @@ export * from './lib/components/container/container.component';
 export * from './lib/components/container/container.module';
 export * from './lib/components/divider/divider.component';
 export * from './lib/components/divider/divider.module';
+export * from './lib/components/dropdown/dropdown-item.component';
 export * from './lib/components/dropdown/dropdown.component';
 export * from './lib/components/dropdown/dropdown.module';
 export * from './lib/components/form/form.component';
