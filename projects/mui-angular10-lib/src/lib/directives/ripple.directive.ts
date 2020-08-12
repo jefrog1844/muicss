@@ -5,8 +5,11 @@ import { Directive, HostListener, ElementRef, Renderer2 } from '@angular/core';
 })
 export class MuiRippleDirective {
 
-  @HostListener('mousedown', ['$event', '$event.currentTarget']) mouseDown() {
-    this.getFadeOutAnimation(event)
+  @HostListener('mousedown', ['$event', '$event.currentTarget'])
+  mouseDown(event: MouseEvent) {
+    if(event.button === 0){
+      this.getFadeOutAnimation(event);
+    }
   }
 
   @HostListener('mouseup', ['$event', '$event.currentTarget']) mouseUp() {
@@ -23,8 +26,7 @@ export class MuiRippleDirective {
 
   ngAfterViewInit() {
     this._cont = this._btn.querySelector('.mui-btn__ripple-container');
-    this._rip = this.renderer.createElement('span');
-    this.renderer.addClass(this._rip, 'mui-ripple');
+    this._rip = this._btn.querySelector('.mui-ripple');
   }
 
   private getFadeOutAnimation(event) {
@@ -45,14 +47,15 @@ export class MuiRippleDirective {
     this.renderer.setStyle(this._rip, 'top', top);
     this.renderer.setStyle(this._rip, 'width', width);
     this.renderer.setStyle(this._rip, 'height', height);
-    this.renderer.appendChild(this._cont, this._rip);
 
+    this.renderer.removeClass(this._rip,'mui--is-animating');
+    this.renderer.addClass(this._rip, 'mui--is-visible');
+    window.requestAnimationFrame(() =>this.renderer.addClass(this._rip,'mui--is-animating') );
+   
   }
 
   private getFadeInAnimation() {
-    setTimeout(() => {
-      this.renderer.removeChild(this._cont, this._rip);
-    }, 300);
+    window.requestAnimationFrame(() =>this.renderer.removeClass(this._rip,'mui--is-visible') );
   }
 
 }

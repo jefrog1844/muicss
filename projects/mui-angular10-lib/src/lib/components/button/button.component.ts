@@ -4,44 +4,9 @@ import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@a
   selector: 'mui-button',
   template: `<button muiRipple class={{class}} (click)='handleClick($event)' [disabled]="disabled">
       <ng-content></ng-content>
-      <span class="mui-btn__ripple-container"></span>
+      <span class="mui-btn__ripple-container"><span class="mui-ripple"></span></span>
       </button>`,
-  styles: [`
- 
-  /* modified by jrogers - not using at this time */
-  .mui-btn__ripple-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    z-index: 0;
-    pointer-events: none;
-  }
-  /* modified by jrogers */
-  .mui-ripple {
-    position: absolute; 
-    border-radius: 50%; 
-    background-color: rgba(0,0,0,0.3);
-    animation: ripple 1s; 
-    opacity: 0; 
-  }
-  
-  /* modified by jrogers - Add animation */
-  @keyframes ripple { 
-      from { 
-          opacity: 1; 
-          transform: scale(0); 
-      } 
-
-      to { 
-          opacity: 0; 
-          transform: scale(10); 
-      } 
-  `
-  ]
+  styles: []
 })
 export class MuiButtonComponent implements OnInit {
 
