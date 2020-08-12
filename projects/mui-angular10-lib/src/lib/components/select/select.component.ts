@@ -4,7 +4,7 @@ import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { DOWN_ARROW, ENTER, ESCAPE, LEFT_ARROW, RIGHT_ARROW, TAB, UP_ARROW, SPACE } from '@angular/cdk/keycodes';
 
 import { ControlValueAccessorConnector } from '../../directives/control-value-accessor-connector';
-import { MuiOptionComponent } from '../option/option.component';
+import { MuiOptionComponent } from './option.component';
 
 import { Subscription } from 'rxjs';
 

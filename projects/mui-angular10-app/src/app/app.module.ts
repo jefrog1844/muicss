@@ -14,7 +14,6 @@ import { MuiDividerModule } from 'mui-angular10-lib';
 import { MuiDropdownModule } from 'mui-angular10-lib';
 import { MuiFormModule } from 'mui-angular10-lib';
 import { MuiInputModule } from 'mui-angular10-lib';
-import { MuiOptionModule } from 'mui-angular10-lib';
 import { MuiPanelModule } from 'mui-angular10-lib';
 import { MuiRadioModule } from 'mui-angular10-lib';
 import { MuiRowModule } from 'mui-angular10-lib';
@@ -66,7 +65,6 @@ import { TabComponent } from './tab/tab.component';
     MuiDropdownModule,
     MuiFormModule,
     MuiInputModule,
-    MuiOptionModule,
     MuiPanelModule,
     MuiRadioModule,
     MuiRowModule,
