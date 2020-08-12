@@ -4,6 +4,7 @@ import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@a
   selector: 'mui-button',
   template: `<button muiRipple class={{class}} (click)='handleClick($event)' [disabled]="disabled">
       <ng-content></ng-content>
+      <span class="mui-btn__ripple-container"></span>
       </button>`,
   styles: [`
   .mui-btn {
@@ -341,8 +342,7 @@ import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@a
   .mui-ripple {
     position: absolute; 
     border-radius: 50%; 
-    /* To make it round */
-    background-color: rgba(0, 0, 0, 0.3); 
+    background-color: rgba(0,0,0,0.3);
     animation: ripple 1s; 
     opacity: 0; 
   }
