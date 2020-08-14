@@ -121,37 +121,46 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private setPositions() {
     //need to switch on placement to set position correctly
-    var origX, overX, origY, overY;
+    var origX, overX, origY, overY,offX,offY;
     switch (this._placement) {
       case 'up':
         origX = 'start';
         overX = 'start';
         origY = 'top';
         overY = 'bottom';
+        offX = 0;
+        offY =-12;
         break;
       case 'right':
         origX = 'end';
         overX = 'start';
         origY = 'top';
         overY = 'top';
+        offX = 2;
+        offY = -12;
         break;
       case 'left':
         origX = 'start';
         overX = 'end';
         origY = 'top';
         overY = 'top';
+        offX = -4;
+        offY = -12;
         break;
       default:
         origX = 'start';
         overX = 'start';
         origY = 'bottom';
         overY = 'top';
+        offX = 0;
+        offY = 12;
     }
 
     switch (this._alignment) {
       case 'bottom':
         origY = 'bottom';
         overY = 'bottom';
+        offY = 12;
         break;
       case 'right':
         origX = 'end';
@@ -161,14 +170,10 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
 
 
     this.positions = [
-      new ConnectionPositionPair({
-        originX: origX,
-        originY: origY
-      }, {
-        overlayX: overX,
-        overlayY: overY
-      })
+      new ConnectionPositionPair(
+        {originX: origX, originY: origY},
+        {overlayX: overX, overlayY: overY},
+        offX, offY)
     ];
-    console.log("positions: ", this.positions);
   }
 }
