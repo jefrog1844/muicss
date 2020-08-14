@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ContentChildren, QueryList, AfterViewInit, OnDestroy, ElementRef, Renderer2 } from '@angular/core';
 import { MuiDropdownItemComponent } from './dropdown-item.component';
-import { ConnectionPositionPair } from '@angular/cdk/overlay';
+import { ConnectionPositionPair, Overlay } from '@angular/cdk/overlay';
 import { Subject, BehaviorSubject, Subscription } from 'rxjs';
 
 @Component({
@@ -18,8 +18,8 @@ import { Subject, BehaviorSubject, Subscription } from 'rxjs';
     {{label}}&nbsp;<mui-caret direction={{placement}}></mui-caret>
   </ng-template>
 
-  <ng-template cdkConnectedOverlay [[cdkConnectedOverlayPositions]="positions"] [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="open$ | async">
-    <ul class="mui-dropdown__menu" [ngClass]="{'mui--is-open': open$ |async}">
+  <ng-template cdkConnectedOverlay [cdkConnectedOverlayPanelClass]="panelClass" [cdkConnectedOverlayPositions]="positions"  [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="open$ | async">
+    <ul >
       <ng-container *ngFor="let item of items">
           <ng-container [ngTemplateOutlet]="item.itemTemplate"></ng-container>
       </ng-container>
@@ -29,7 +29,7 @@ import { Subject, BehaviorSubject, Subscription } from 'rxjs';
   styles: []
 })
 export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
-
+  panelClass: string = "mui-dropdown__menu";
   @Input()
   set variant(variant: string) {
     if (variant) {
@@ -73,17 +73,8 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
   isOpen: boolean = false;
   private _drop;
 
-  public positions = [
-    new ConnectionPositionPair({
-      originX: 'end',
-      originY: 'top'
-    }, {
-      overlayX: 'end',
-      overlayY: 'bottom'
-    },
-      0,
-      50)
-  ];
+  //this needs to change based on placement
+  public positions = [];
 
   private _open = new BehaviorSubject<boolean>(false);
   open$ = this._open.asObservable();
@@ -104,6 +95,7 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit() {
     this._drop = this.el.nativeElement;
+    
   }
 
   ngOnDestroy() {
@@ -124,8 +116,15 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
   };
 
   private setPositions() {
-    console.log("dropdown: ", this._drop);
-    const rect = this._drop.getBoundingClientRect();
-    console.log("rect: ",rect);
+    //need to switch on placement to set position correctly
+    this.positions = [
+      new ConnectionPositionPair({
+        originX: 'end',
+        originY: 'top'
+      }, {
+        overlayX: 'end',
+        overlayY: 'bottom'
+      })
+    ];
   }
 }
