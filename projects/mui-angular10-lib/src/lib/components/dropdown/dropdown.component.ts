@@ -6,7 +6,7 @@ import { Subject, BehaviorSubject, Subscription } from 'rxjs';
 @Component({
   selector: 'mui-dropdown',
   template: `
-  <div class="mui-dropdown">
+  <div class={{dropdownClass}}>
       <mui-button variant={{variant}} color={{color}} size={{size}} (click)="showItems($event)" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
         <ng-container *ngIf="placement === 'left' else default">
           <mui-caret direction={{placement}}></mui-caret>&nbsp;{{label}}
@@ -18,8 +18,8 @@ import { Subject, BehaviorSubject, Subscription } from 'rxjs';
     {{label}}&nbsp;<mui-caret direction={{placement}}></mui-caret>
   </ng-template>
 
-  <ng-template cdkConnectedOverlay [cdkConnectedOverlayPanelClass]="panelClass" [cdkConnectedOverlayPositions]="positions"  [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="open$ | async">
-    <ul >
+  <ng-template cdkConnectedOverlay [cdkConnectedOverlayPanelClass]="menuClass" [cdkConnectedOverlayPositions]="positions"  [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="open$ | async">
+    <ul>
       <ng-container *ngFor="let item of items">
           <ng-container [ngTemplateOutlet]="item.itemTemplate"></ng-container>
       </ng-container>
@@ -29,7 +29,9 @@ import { Subject, BehaviorSubject, Subscription } from 'rxjs';
   styles: []
 })
 export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
-  panelClass: string = "mui-dropdown__menu";
+  dropdownClass: string = "mui-dropdown";
+  menuClass: string[] = ["mui-dropdown__menu", "mui--is-open"];
+
   @Input()
   set variant(variant: string) {
     if (variant) {
@@ -51,7 +53,7 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
     if (placement) {
       this._placement = placement;
     }
-    this.class = this.class + " mui-dropdown--" + placement;
+    //this.dropdownClass = this.dropdownClass + " mui-dropdown--" + placement;
   }
 
   get placement(): string {
@@ -61,16 +63,16 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input()
   set alignment(alignment: string) {
     if (alignment) {
-      this.class = this.class + " mui-dropdown__menu--" + alignment;
+      this._alignment = alignment;
     }
+    //this.menuClass = this.menuClass + " mui-dropdown__menu--" + alignment;
   }
 
   @ContentChildren(MuiDropdownItemComponent)
   items: QueryList<MuiDropdownItemComponent>;
 
-  class: string = "mui-dropdown";
 
-  isOpen: boolean = false;
+
   private _drop;
 
   //this needs to change based on placement
@@ -79,23 +81,25 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
   private _open = new BehaviorSubject<boolean>(false);
   open$ = this._open.asObservable();
 
-  private _placement: string = "right";
+  private _placement: string = "down";
+  private _alignment: string = 'left';
   private unsubscribe: Subscription = new Subscription();
 
 
-  constructor(private el: ElementRef, private renderer:Renderer2) { }
+  constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     const sub = this._open.subscribe(open => {
-      if(open) {
+      if (open) {
         this.setPositions();
       }
-    })
+    });
+    this.unsubscribe.add(sub);
   }
 
   ngAfterViewInit() {
     this._drop = this.el.nativeElement;
-    
+
   }
 
   ngOnDestroy() {
@@ -110,21 +114,61 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
     event.preventDefault();
     event.stopPropagation();
     // open the dropdown
-    //this.isOpen = !this.isOpen;
     this._open.next(!this._open.value);
-    console.log("isOpen: ", this._open.value);
+
+
   };
 
   private setPositions() {
     //need to switch on placement to set position correctly
+    var origX, overX, origY, overY;
+    switch (this._placement) {
+      case 'up':
+        origX = 'start';
+        overX = 'start';
+        origY = 'top';
+        overY = 'bottom';
+        break;
+      case 'right':
+        origX = 'end';
+        overX = 'start';
+        origY = 'top';
+        overY = 'top';
+        break;
+      case 'left':
+        origX = 'start';
+        overX = 'end';
+        origY = 'top';
+        overY = 'top';
+        break;
+      default:
+        origX = 'start';
+        overX = 'start';
+        origY = 'bottom';
+        overY = 'top';
+    }
+
+    switch (this._alignment) {
+      case 'bottom':
+        origY = 'bottom';
+        overY = 'bottom';
+        break;
+      case 'right':
+        origX = 'end';
+        overX = 'end';
+        break;
+    }
+
+
     this.positions = [
       new ConnectionPositionPair({
-        originX: 'end',
-        originY: 'top'
+        originX: origX,
+        originY: origY
       }, {
-        overlayX: 'end',
-        overlayY: 'bottom'
+        overlayX: overX,
+        overlayY: overY
       })
     ];
+    console.log("positions: ", this.positions);
   }
 }
