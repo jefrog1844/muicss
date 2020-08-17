@@ -26,32 +26,25 @@ import { Subject, BehaviorSubject, Subscription } from 'rxjs';
   `,
   styles: []
 })
-export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
-  dropdownClass: string = "mui-dropdown";
-  menuClass: string[] = ["mui-dropdown__menu", "mui--is-open"];
+export class MuiDropdownComponent implements OnInit, OnDestroy {
 
   @Input()
-  set variant(variant: string) {
-    if (variant) {
-
-    }
-  }
+  variant?: string;
 
   @Input()
   label: string;
 
   @Input()
-  color: string;
+  color?: string;
 
   @Input()
-  size: string
+  size?: string
 
   @Input()
   set placement(placement: string) {
     if (placement) {
       this._placement = placement;
     }
-    //this.dropdownClass = this.dropdownClass + " mui-dropdown--" + placement;
   }
 
   get placement(): string {
@@ -63,15 +56,10 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
     if (alignment) {
       this._alignment = alignment;
     }
-    //this.menuClass = this.menuClass + " mui-dropdown__menu--" + alignment;
   }
 
   @ContentChildren(MuiDropdownItemComponent)
   items: QueryList<MuiDropdownItemComponent>;
-
-
-
-  private _drop;
 
   //this needs to change based on placement
   public positions = [];
@@ -83,8 +71,7 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
   private _alignment: string = '';
   private unsubscribe: Subscription = new Subscription();
 
-
-  constructor(private el: ElementRef, private renderer: Renderer2) { }
+  constructor() { }
 
   ngOnInit(): void {
     const sub = this._open.subscribe(open => {
@@ -93,11 +80,6 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
       }
     });
     this.unsubscribe.add(sub);
-  }
-
-  ngAfterViewInit() {
-    this._drop = this.el.nativeElement;
-
   }
 
   ngOnDestroy() {
@@ -111,15 +93,15 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
     }
     event.preventDefault();
     event.stopPropagation();
+
     // open the dropdown
     this._open.next(!this._open.value);
-
-
   };
 
   private setPositions() {
-    //need to switch on placement to set position correctly
-    var origX, overX, origY, overY,offX,offY;
+    //using offset to adjust from css padding, margin,etc
+    var origX, overX, origY, overY, offX, offY;
+
     switch (this._placement) {
       case 'up':
         origX = 'start';
@@ -127,7 +109,7 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
         origY = 'top';
         overY = 'bottom';
         offX = 0;
-        offY =-12;
+        offY = -12;
         break;
       case 'right':
         origX = 'end';
@@ -169,8 +151,8 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.positions = [
       new ConnectionPositionPair(
-        {originX: origX, originY: origY},
-        {overlayX: overX, overlayY: overY},
+        { originX: origX, originY: origY },
+        { overlayX: overX, overlayY: overY },
         offX, offY)
     ];
   }
