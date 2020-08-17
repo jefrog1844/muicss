@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ContentChildren, QueryList, AfterViewInit, On
 import { MuiDropdownItemComponent } from './dropdown-item.component';
 import { ConnectionPositionPair, Overlay, CdkConnectedOverlay } from '@angular/cdk/overlay';
 import { Subject, BehaviorSubject, Subscription } from 'rxjs';
+import {ESCAPE } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'mui-dropdown',
@@ -16,7 +17,7 @@ import { Subject, BehaviorSubject, Subscription } from 'rxjs';
     {{label}}&nbsp;<mui-caret direction={{placement}}></mui-caret>
   </ng-template>
 
-  <ng-template cdkConnectedOverlay  [cdkConnectedOverlayPositions]="positions"   [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="open$ | async">
+  <ng-template cdkConnectedOverlay  [cdkConnectedOverlayPositions]="positions"   [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOpen">
     <ul class="mui-dropdown__menu mui--is-open" style="position:'relative';">
       <ng-container *ngFor="let item of items">  
         <ng-container [ngTemplateOutlet]="item.itemTemplate"></ng-container>
@@ -27,12 +28,6 @@ import { Subject, BehaviorSubject, Subscription } from 'rxjs';
   styles: []
 })
 export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
-
-
-  // @HostListener('document:click')
-  // closeOverlay() {
-  //   this.close();
-  //  }
 
   @Input()
   variant?: string;
@@ -72,8 +67,7 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
   //this needs to change based on placement
   public positions = [];
 
-  private _open = new BehaviorSubject<boolean>(false);
-  open$ = this._open.asObservable();
+  isOpen: boolean = false;
 
   private _placement: string = "";
   private _alignment: string = '';
@@ -82,21 +76,16 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor() { }
 
   ngAfterViewInit() {
-    const sub = this._open.subscribe(open => {
-      if (open) {
-        this.setPositions();
+    const out = this._overlay.overlayOutsideClick.subscribe(event => {
+      this.showItems(event);
+    });
+
+    const key = this._overlay.overlayKeydown.subscribe(event =>  {
+      if(event.keyCode === ESCAPE) {
+        this.close();
       }
     });
 
-    const out = this._overlay.overlayOutsideClick.subscribe(event => {
-      this.close();
-    });
-
-    const key = this._overlay.overlayKeydown.subscribe(event => {
-      this.close();
-    });
-
-    this.unsubscribe.add(sub);
     this.unsubscribe.add(out);
     this.unsubscribe.add(key);
     this.close();
@@ -111,7 +100,7 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
 
   /* show the options */
   showItems = function (event: MouseEvent) {
-    
+
     if (this.disabled) {
       return;
     }
@@ -119,7 +108,12 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
     event.stopPropagation();
 
     // open the dropdown
-    this._open.next(!this._open.value);
+    if(!this.isOpen) {
+      this.setPositions();
+      this.isOpen = true;
+    } else {
+      this.isOpen = false;
+    }
   };
 
   private setPositions() {
@@ -181,6 +175,6 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   private close() {
-    this._open.next(false);
+    this.isOpen = false;
   }
 }

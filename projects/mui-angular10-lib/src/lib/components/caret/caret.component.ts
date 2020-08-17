@@ -10,7 +10,6 @@ export class MuiCaretComponent implements OnInit {
 
   @Input()
   set direction(direction: string) {
-    console.log("direction: ",direction);
     if (direction) {
       this.class = this.class + " mui-caret--" + direction;
       
