@@ -6,22 +6,20 @@ import { Subject, BehaviorSubject, Subscription } from 'rxjs';
 @Component({
   selector: 'mui-dropdown',
   template: `
-  <div class={{dropdownClass}}>
-      <mui-button variant={{variant}} color={{color}} size={{size}} (click)="showItems($event)" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
-        <ng-container *ngIf="placement === 'left' else default">
-          <mui-caret direction={{placement}}></mui-caret>&nbsp;{{label}}
-        </ng-container>
-      </mui-button>
-  </div>
+  <mui-button variant={{variant}} color={{color}} size={{size}} (click)="showItems($event)" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+    <ng-container *ngIf="placement === 'left' else default">
+      <mui-caret direction={{placement}}></mui-caret>&nbsp;{{label}}
+    </ng-container>
+  </mui-button>
 
   <ng-template #default>
     {{label}}&nbsp;<mui-caret direction={{placement}}></mui-caret>
   </ng-template>
 
-  <ng-template cdkConnectedOverlay [cdkConnectedOverlayPanelClass]="menuClass" [cdkConnectedOverlayPositions]="positions"  [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="open$ | async">
-    <ul>
-      <ng-container *ngFor="let item of items">
-          <ng-container [ngTemplateOutlet]="item.itemTemplate"></ng-container>
+  <ng-template cdkConnectedOverlay  [cdkConnectedOverlayPositions]="positions"  [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="open$ | async">
+    <ul class="mui-dropdown__menu mui--is-open" style="position:'relative';">
+      <ng-container *ngFor="let item of items">  
+        <ng-container [ngTemplateOutlet]="item.itemTemplate"></ng-container>
       </ng-container>
     </ul>
   </ng-template>
@@ -81,8 +79,8 @@ export class MuiDropdownComponent implements OnInit, OnDestroy, AfterViewInit {
   private _open = new BehaviorSubject<boolean>(false);
   open$ = this._open.asObservable();
 
-  private _placement: string = "down";
-  private _alignment: string = 'left';
+  private _placement: string = "";
+  private _alignment: string = '';
   private unsubscribe: Subscription = new Subscription();
 
 
