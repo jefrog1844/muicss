@@ -3,7 +3,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'mui-tab',
   template: `
-  <div class="mui-tabs__pane" [ngClass]="{'mui--is-active': tabId === selectedId}"><ng-content></ng-content></div>
+  <div class="mui-tabs__pane" [hidden]="!active" [ngClass]="{'mui--is-active':active}">
+    <ng-content></ng-content>
+  </div>
   `,
   styles: []
 })
@@ -13,24 +15,24 @@ export class MuiTabComponent implements OnInit {
   label: string;
 
   @Input()
-  selectedId: any;
-
-  @Input()
-  tabId: any;
-
-  @Output() muiSelect = new EventEmitter<any>();
-  @Output() muiDeselect = new EventEmitter<any>();
+  active?: boolean = false;
+  
+  @Output() muiSelect = new EventEmitter<MuiTabComponent>();
+  @Output() muiDeselect = new EventEmitter<MuiTabComponent>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onSelect(index: any) {
-    this.muiSelect.emit(index);
+  onSelect() {
+    this.muiSelect.emit(this);
+    this.active = true;
   }
 
-  onDeselect(index: any) {
-    this.muiDeselect.emit(index);
+  onDeselect() {
+    this.muiDeselect.emit(this);
+    this.active = false;
   }
+
 }
