@@ -1,8 +1,8 @@
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, ViewContainerRef } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {OverlayModule} from '@angular/cdk/overlay';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 import { MuiAppbarModule } from 'mui-angular10-lib';
 import { MuiButtonModule } from 'mui-angular10-lib';
@@ -21,7 +21,9 @@ import { MuiSelectModule } from 'mui-angular10-lib';
 import { MuiTabModule } from 'mui-angular10-lib';
 import { MuiTabsModule } from 'mui-angular10-lib';
 import { MuiTextareaModule } from 'mui-angular10-lib';
-import { MuiDirectivesModule } from 'mui-angular10-lib'
+import { MuiOverlayModule } from 'mui-angular10-lib';
+import { MuiDirectivesModule } from 'mui-angular10-lib';
+import { MuiOverlayService } from 'mui-angular10-lib';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +36,7 @@ import { DropdownComponent } from './dropdown/dropdown.component';
 import { FormComponent } from './form/form.component';
 import { GridComponent } from './grid/grid.component';
 import { TabComponent } from './tab/tab.component';
+import { OverlayComponent } from './overlay/overlay.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,8 @@ import { TabComponent } from './tab/tab.component';
     DropdownComponent,
     FormComponent,
     GridComponent,
-    TabComponent
+    TabComponent,
+    OverlayComponent
   ],
   imports: [
     BrowserModule,
@@ -72,9 +76,10 @@ import { TabComponent } from './tab/tab.component';
     MuiTabModule,
     MuiTabsModule,
     MuiTextareaModule,
+    MuiOverlayModule,
     MuiDirectivesModule
   ],
-  providers: [],
+  providers: [MuiOverlayService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

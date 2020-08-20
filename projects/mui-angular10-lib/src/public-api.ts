@@ -38,10 +38,14 @@ export * from './lib/components/tabs/tabs.component';
 export * from './lib/components/tabs/tabs.module';
 export * from './lib/components/textarea/textarea.component';
 export * from './lib/components/textarea/textarea.module';
+export * from './lib/components/overlay/overlay.component';
+export * from './lib/components/overlay/overlay.service';
+export * from './lib/components/overlay/overlay.module';
 export * from './lib/directives/floating-label.directive';
 export * from './lib/directives/ripple.directive';
 export * from './lib/directives/control-value-accessor-connector';
 export * from './lib/directives/directives.module';
+
 
 
 
