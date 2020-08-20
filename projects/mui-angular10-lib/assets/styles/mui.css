@@ -15,6 +15,33 @@ mui-checkbox + mui-checkbox {
   background-color: #EEEEEE;
 }
 
+.mui-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.2);
+  overflow: auto;
+}
+
+.mui-dialog {
+  z-index: 1000;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  min-height: 200px;
+  width: 90%;
+  max-width: 520px;
+  background-color: #fff;
+  padding: 12px;
+  box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12);
+}
+
 
 /**
  * MUI Colors module

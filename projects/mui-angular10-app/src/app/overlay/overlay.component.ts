@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, TemplateRef, ViewContainerRef } from '@angular/core';
 import { MuiOverlayService } from 'mui-angular10-lib';
+import { OverlayRef, Overlay } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-overlay',
@@ -9,17 +10,19 @@ import { MuiOverlayService } from 'mui-angular10-lib';
 export class OverlayComponent implements OnInit {
 
   showDialog = false;
+  private _overlayRef: OverlayRef;
   constructor(private overlayService: MuiOverlayService, private viewContainerRef: ViewContainerRef) { }
 
   ngOnInit(): void {
   }
 
   open(content: TemplateRef<any>) {
-    const ref = this.overlayService.openOverlay(content, this.viewContainerRef);
-    //ref.afterClosed....
+    this._overlayRef = this.overlayService.openOverlay(content, this.viewContainerRef);
   }
 
   close(event: any) {
-    
+    console.log("event: ",event);
+    this._overlayRef.dispose();
+    this._overlayRef = null;
   }
 }
