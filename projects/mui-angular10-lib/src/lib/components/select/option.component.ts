@@ -19,7 +19,6 @@ export class MuiOptionComponent implements Highlightable {
 
   @Input()
   set disabled(value: boolean) {
-    console.log("disabled: ",value);
     if (value) {
       this._disabled = value;
     }
