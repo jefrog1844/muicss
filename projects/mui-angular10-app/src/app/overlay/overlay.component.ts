@@ -21,7 +21,6 @@ export class OverlayComponent implements OnInit {
   }
 
   close(event: any) {
-    console.log("event: ",event);
     this._overlayRef.dispose();
     this._overlayRef = null;
   }
