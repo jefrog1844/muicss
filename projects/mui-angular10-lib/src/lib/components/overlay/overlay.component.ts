@@ -34,8 +34,7 @@ export class MuiOverlayComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  close(event: Event) {
-    console.log("event: ",event);
+  close() {
     this.visible = false;
     this.visibleChange.emit(this.visible);
   }
