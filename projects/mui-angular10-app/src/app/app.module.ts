@@ -21,10 +21,8 @@ import { MuiSelectModule } from 'mui-angular10-lib';
 import { MuiTabModule } from 'mui-angular10-lib';
 import { MuiTabsModule } from 'mui-angular10-lib';
 import { MuiTextareaModule } from 'mui-angular10-lib';
-import { MuiOverlayModule } from 'mui-angular10-lib';
 import { MuiModalModule } from 'mui-angular10-lib';
 import { MuiDirectivesModule } from 'mui-angular10-lib';
-import { MuiOverlayService } from 'mui-angular10-lib';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -77,11 +75,10 @@ import { ModalComponent } from './modal/modal.component';
     MuiTabModule,
     MuiTabsModule,
     MuiTextareaModule,
-    MuiOverlayModule,
     MuiModalModule,
     MuiDirectivesModule
   ],
-  providers: [MuiOverlayService, MuiModalService],
+  providers: [MuiModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
