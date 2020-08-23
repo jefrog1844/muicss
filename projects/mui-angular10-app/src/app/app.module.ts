@@ -4,7 +4,7 @@ import { NgModule, ViewContainerRef } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 
-import { MuiAppbarModule } from 'mui-angular10-lib';
+import { MuiAppbarModule, MuiModalService } from 'mui-angular10-lib';
 import { MuiButtonModule } from 'mui-angular10-lib';
 import { MuiCaretModule } from 'mui-angular10-lib';
 import { MuiCheckboxModule } from 'mui-angular10-lib';
@@ -22,6 +22,7 @@ import { MuiTabModule } from 'mui-angular10-lib';
 import { MuiTabsModule } from 'mui-angular10-lib';
 import { MuiTextareaModule } from 'mui-angular10-lib';
 import { MuiOverlayModule } from 'mui-angular10-lib';
+import { MuiModalModule } from 'mui-angular10-lib';
 import { MuiDirectivesModule } from 'mui-angular10-lib';
 import { MuiOverlayService } from 'mui-angular10-lib';
 
@@ -77,9 +78,10 @@ import { OverlayComponent } from './overlay/overlay.component';
     MuiTabsModule,
     MuiTextareaModule,
     MuiOverlayModule,
+    MuiModalModule,
     MuiDirectivesModule
   ],
-  providers: [MuiOverlayService],
+  providers: [MuiOverlayService, MuiModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,7 +15,20 @@ mui-checkbox + mui-checkbox {
   background-color: #EEEEEE;
 }
 
-.mui-overlay {
+
+mui-modal {
+  display:none;
+}
+
+.mui-modal-body {
+  padding: 20px;
+  background: #fff;
+
+  /* margin exposes part of the modal background */
+  margin: 40px;
+}
+
+.mui-modal-overlay {
   position: fixed;
   top: 0;
   right: 0;
@@ -26,7 +39,7 @@ mui-checkbox + mui-checkbox {
   overflow: auto;
 }
 
-.mui-dialog {
+.mui-modal {
   z-index: 1000;
   position: fixed;
   right: 0;

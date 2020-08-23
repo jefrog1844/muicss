@@ -1,0 +1,86 @@
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, ViewChild, ElementRef, Renderer2, HostListener, AfterViewInit } from '@angular/core';
+import { trigger, style, animate, transition, animation } from '@angular/animations'
+import { MuiModalService } from './modal.service';
+
+@Component({
+  selector: 'mui-modal',
+  template: `
+
+  <div [@dialog] *ngIf="visible" class="mui-modal">
+    <div class="mui-modal-body">  
+      <ng-content></ng-content>
+      <mui-button *ngIf="closable" (click)="close()" variant="flat" size="small" style="position: absolute;top: 8px;right: 8px;">X</mui-button>
+    </div>
+  </div>
+  <div *ngIf="visible" class="mui-modal-overlay" (click)="backdropClick()"></div>
+  
+  
+  `,
+  styles: [],
+  animations: [
+    trigger('dialog', [
+      transition('void => *', [
+        style({ transform: 'scale3d(.3, .3, .3)' }),
+        animate(100)
+      ]),
+      transition('* => void', [
+        animate(100, style({ transform: 'scale3d(.0, .0, .0)' }))
+      ])
+    ])
+  ]
+})
+export class MuiModalComponent implements OnInit, OnDestroy {
+
+  @Input() closable?: boolean = true;
+  @Input() visible?: boolean = false;
+  @Input() id: string;
+  @Input()
+  set blocking(blocking: boolean) {
+    if (blocking) {
+      this._blocking = blocking;
+    }
+  }
+
+  get blocking(): boolean {
+    return this._blocking;
+  }
+
+  @Output() backDropClick: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
+
+  private container: any;
+  private _blocking: boolean = true;
+
+  constructor(private modalService: MuiModalService, private renderer: Renderer2, private el: ElementRef) {
+    this.container = this.el.nativeElement;
+  }
+
+  ngOnInit(): void {
+    if (!this.id) {
+      console.error('modal must have an id');
+      return;
+    }
+    document.body.appendChild(this.el.nativeElement);
+    this.modalService.register(this);
+  }
+
+  ngOnDestroy(): void {
+    this.modalService.unregister(this);
+  }
+
+  open() {
+    this.visible = true;
+    this.renderer.addClass(this.container,"mui--show");
+  }
+
+  close() {
+    this.visible = false;
+    this.renderer.removeClass(this.container,"mui--show");
+  }
+
+  backdropClick(event: MouseEvent) {
+    if (this.blocking !== true) {
+      this.close();
+      this.backDropClick.emit(event);
+    }
+  }
+}
