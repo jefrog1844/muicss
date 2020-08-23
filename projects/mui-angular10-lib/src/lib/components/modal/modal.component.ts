@@ -33,10 +33,7 @@ export class MuiModalComponent implements OnInit, OnDestroy {
 
   @Output() backDropClick: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
 
-  private container: any;
-
-  constructor(private modalService: MuiModalService, private renderer: Renderer2, private el: ElementRef) {
-    this.container = this.el.nativeElement;
+  constructor(private modalService: MuiModalService) {
   }
 
   ngOnInit(): void {
@@ -44,7 +41,6 @@ export class MuiModalComponent implements OnInit, OnDestroy {
       console.error('modal must have an id');
       return;
     }
-    document.body.appendChild(this.el.nativeElement);
     this.modalService.register(this);
   }
 
