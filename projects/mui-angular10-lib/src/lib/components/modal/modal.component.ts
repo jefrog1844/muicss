@@ -5,16 +5,11 @@ import { MuiModalService } from './modal.service';
 @Component({
   selector: 'mui-modal',
   template: `
-
-  <div [@dialog] *ngIf="visible" class="mui-modal">
-    <div class="mui-modal-body">  
-      <ng-content></ng-content>
-      <mui-button *ngIf="closable" (click)="close()" variant="flat" size="small" style="position: absolute;top: 8px;right: 8px;">X</mui-button>
-    </div>
+  <div [@dialog] *ngIf="visible" class="mui-modal-dialog">
+    <ng-content></ng-content>
+    <mui-button *ngIf="blocking || closable" (click)="close()" variant="flat" size="small" style="position: absolute;top: 8px;right: 8px;">X</mui-button>
   </div>
-  <div *ngIf="visible" class="mui-modal-overlay" (click)="backdropClick()"></div>
-  
-  
+  <div *ngIf="visible" class="mui-modal-overlay" (click)="backdropClick()">
   `,
   styles: [],
   animations: [
@@ -31,24 +26,14 @@ import { MuiModalService } from './modal.service';
 })
 export class MuiModalComponent implements OnInit, OnDestroy {
 
-  @Input() closable?: boolean = true;
+  @Input() closable?: boolean = false;
   @Input() visible?: boolean = false;
   @Input() id: string;
-  @Input()
-  set blocking(blocking: boolean) {
-    if (blocking) {
-      this._blocking = blocking;
-    }
-  }
-
-  get blocking(): boolean {
-    return this._blocking;
-  }
+  @Input() blocking?: boolean = false;
 
   @Output() backDropClick: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
 
   private container: any;
-  private _blocking: boolean = true;
 
   constructor(private modalService: MuiModalService, private renderer: Renderer2, private el: ElementRef) {
     this.container = this.el.nativeElement;
@@ -68,19 +53,19 @@ export class MuiModalComponent implements OnInit, OnDestroy {
   }
 
   open() {
-    this.visible = true;
-    this.renderer.addClass(this.container,"mui--show");
+    this.modalService.open(this.id);
   }
 
   close() {
-    this.visible = false;
-    this.renderer.removeClass(this.container,"mui--show");
+    this.modalService.close(this.id);
   }
 
-  backdropClick(event: MouseEvent) {
-    if (this.blocking !== true) {
+  backdropClick(): void {
+    if(this.blocking === true) {
+      return;
+    } else {
       this.close();
-      this.backDropClick.emit(event);
-    }
+    }    
   }
+
 }

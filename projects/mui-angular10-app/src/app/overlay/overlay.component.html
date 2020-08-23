@@ -6,17 +6,17 @@
 			<mui-panel>
 				<mui-button color="primary" variant="raised" (click)="openModal('modal-1');">Open</mui-button>
 			</mui-panel>
-			<mui-modal id="modal-1" [(visible)]="showDialog">
-				<h1>Hello World</h1>
+			<mui-modal id="modal-1" [blocking]="true">
+				<h1>Hello World 1</h1>
 				<mui-button variant="flat" color="danger" (click)="closeModal('modal-1');">Close</mui-button>
 			</mui-modal>
 
-			<h2>Non-blocking overlay - closes on backdrop click</h2>
+			<h2>Non-blocking (default) overlay - closes on backdrop click</h2>
 			<mui-panel>
 				<mui-button color="primary" variant="raised" (click)="openModal('modal-2');">Open</mui-button>
 			</mui-panel>
-			<mui-modal id="modal-2" blocking="false" [(visible)]="showDialog">
-				<h1>Hello World</h1>
+			<mui-modal id="modal-2">
+				<h1>Hello World 2</h1>
 				<mui-button variant="flat" color="danger" (click)="closeModal('modal-2');">Close</mui-button>
 			</mui-modal>
 		</mui-col>

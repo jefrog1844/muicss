@@ -23,12 +23,20 @@ export class MuiModalService {
 
   close(modalId: string) {
     const modal = this.findModal(modalId);
-    modal.close();
+    if (modal) {
+      setTimeout(() => {
+        modal.visible = false;
+      }, 250);
+    }
   }
 
   open(modalId: string) {
     const modal = this.findModal(modalId);
-    modal.open();
+    if (modal) {
+      setTimeout(() => {
+        modal.visible = true;
+      }, 250);
+    }
   }
 
   private findModal(modalId: string): MuiModalComponent {
