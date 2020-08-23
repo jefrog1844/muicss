@@ -9,7 +9,7 @@ import {FormComponent} from './form/form.component';
 import {GridComponent} from './grid/grid.component';
 import {PanelComponent} from './panel/panel.component';
 import {TabComponent} from './tab/tab.component';
-import {OverlayComponent} from './overlay/overlay.component';
+import {ModalComponent} from './modal/modal.component';
 
 const routes: Routes = [
   {
@@ -49,8 +49,8 @@ const routes: Routes = [
     component: TabComponent,
   },
   {
-    path: 'overlay',
-    component: OverlayComponent,
+    path: 'modal',
+    component: ModalComponent,
   },
   {
     path: '',

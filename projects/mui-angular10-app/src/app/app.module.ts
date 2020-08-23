@@ -37,7 +37,7 @@ import { DropdownComponent } from './dropdown/dropdown.component';
 import { FormComponent } from './form/form.component';
 import { GridComponent } from './grid/grid.component';
 import { TabComponent } from './tab/tab.component';
-import { OverlayComponent } from './overlay/overlay.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +51,7 @@ import { OverlayComponent } from './overlay/overlay.component';
     FormComponent,
     GridComponent,
     TabComponent,
-    OverlayComponent
+    ModalComponent
   ],
   imports: [
     BrowserModule,

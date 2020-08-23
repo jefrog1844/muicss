@@ -2,11 +2,11 @@ import { Component} from '@angular/core';
 import {  MuiModalService } from 'mui-angular10-lib';
 
 @Component({
-  selector: 'app-overlay',
-  templateUrl: './overlay.component.html',
-  styleUrls: ['./overlay.component.css']
+  selector: 'app-modal',
+  templateUrl: './modal.component.html',
+  styles: []
 })
-export class OverlayComponent {
+export class ModalComponent {
 
   constructor(private modalService: MuiModalService) { }
 
