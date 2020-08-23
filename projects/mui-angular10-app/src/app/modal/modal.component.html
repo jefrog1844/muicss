@@ -1,8 +1,8 @@
 <mui-container fluid>
 	<mui-row>
 		<mui-col sm="10" sm-offset="1">
-			<h1>Overlay</h1>
-			<h2>Blocking overlay - does not close on backdrop click</h2>
+			<h1>Modal</h1>
+			<h2>Blocking modal - does not close on backdrop click</h2>
 			<mui-panel>
 				<mui-button color="primary" variant="raised" (click)="openModal('modal-1');">Open</mui-button>
 			</mui-panel>
@@ -11,7 +11,7 @@
 				<mui-button variant="flat" color="dark" (click)="closeModal('modal-1');">Close</mui-button>
 			</mui-modal>
 
-			<h2>Non-blocking (default) overlay - closes on backdrop click</h2>
+			<h2>Non-blocking (default) modal - closes on backdrop click</h2>
 			<mui-panel>
 				<mui-button color="primary" variant="raised" (click)="openModal('modal-2');">Open</mui-button>
 			</mui-panel>
