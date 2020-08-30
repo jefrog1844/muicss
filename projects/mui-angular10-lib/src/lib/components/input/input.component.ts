@@ -5,7 +5,11 @@ import { ControlValueAccessorConnector } from '../../directives/control-value-ac
 
 @Component({
   selector: 'mui-input',
-  template: `<div class="mui-textfield"><input type={{type}} [formControl]="control" placeholder={{hint}}><label tabindex="-1">{{label}}</label></div>`,
+  template: `
+    <div class="mui-textfield" #divTarget>
+      <input #inputTarget [ngClass]="{'mui--is-not-empty': control.value, 'mui--is-empty': !control.value}" type={{type}} [formControl]="control" placeholder={{hint}}>
+      <label tabindex="-1">{{label}}</label>
+    </div>`,
   styles: [],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
