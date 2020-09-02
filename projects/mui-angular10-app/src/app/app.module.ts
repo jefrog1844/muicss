@@ -4,7 +4,8 @@ import { NgModule, ViewContainerRef } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 
-import { MuiAppbarModule, MuiModalService } from 'mui-angular10-lib';
+import {MuiAppbarModule } from 'mui-angular10-lib/appbar';
+import { MuiModalService } from 'mui-angular10-lib';
 import { MuiButtonModule } from 'mui-angular10-lib';
 import { MuiCaretModule } from 'mui-angular10-lib';
 import { MuiCheckboxModule } from 'mui-angular10-lib';

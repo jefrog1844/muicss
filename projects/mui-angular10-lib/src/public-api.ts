@@ -1,8 +1,6 @@
 /*
  * Public API Surface of mui-angular10-lib
  */
-
-
 export * from './lib/components/button/button.component';
 export * from './lib/components/button/button.module';
 export * from './lib/components/caret/caret.component';
