@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {MuiPanelComponent} from 'mui-angular10-lib';
 
 @Component({
   selector: 'app-panel',

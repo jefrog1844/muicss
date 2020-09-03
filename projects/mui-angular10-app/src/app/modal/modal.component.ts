@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import {  MuiModalService } from 'mui-angular10-lib';
+import {  MuiModalService } from 'mui-angular10-lib/modal';
 
 @Component({
   selector: 'app-modal',

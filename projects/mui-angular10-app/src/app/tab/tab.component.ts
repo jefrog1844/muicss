@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MuiTabComponent } from 'mui-angular10-lib';
+import { MuiTabComponent } from 'mui-angular10-lib/tab';
 
 @Component({
   selector: 'app-tab',
