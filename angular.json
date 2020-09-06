@@ -43,28 +43,28 @@
         }
       }
     },
-    "mui-angular10-app": {
+    "example-app": {
       "projectType": "application",
       "schematics": {},
-      "root": "projects/mui-angular10-app",
-      "sourceRoot": "projects/mui-angular10-app/src",
+      "root": "projects/example-app",
+      "sourceRoot": "projects/example-app/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/mui-angular10-app",
-            "index": "projects/mui-angular10-app/src/index.html",
-            "main": "projects/mui-angular10-app/src/main.ts",
-            "polyfills": "projects/mui-angular10-app/src/polyfills.ts",
-            "tsConfig": "projects/mui-angular10-app/tsconfig.app.json",
+            "outputPath": "dist/example-app",
+            "index": "projects/example-app/src/index.html",
+            "main": "projects/example-app/src/main.ts",
+            "polyfills": "projects/example-app/src/polyfills.ts",
+            "tsConfig": "projects/example-app/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "projects/mui-angular10-app/src/favicon.ico",
-              "projects/mui-angular10-app/src/assets"
+              "projects/example-app/src/favicon.ico",
+              "projects/example-app/src/assets"
             ],
             "styles": [
-              "projects/mui-angular10-app/src/styles.css",
+              "projects/example-app/src/styles.css",
               "dist/mui-angular/assets/styles/mui.css"
             ],
             "scripts": []
@@ -73,8 +73,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/mui-angular10-app/src/environments/environment.ts",
-                  "with": "projects/mui-angular10-app/src/environments/environment.prod.ts"
+                  "replace": "projects/example-app/src/environments/environment.ts",
+                  "with": "projects/example-app/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -103,33 +103,33 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "mui-angular10-app:build"
+            "browserTarget": "example-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "mui-angular10-app:build:production"
+              "browserTarget": "example-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "mui-angular10-app:build"
+            "browserTarget": "example-app:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/mui-angular10-app/src/test.ts",
-            "polyfills": "projects/mui-angular10-app/src/polyfills.ts",
-            "tsConfig": "projects/mui-angular10-app/tsconfig.spec.json",
-            "karmaConfig": "projects/mui-angular10-app/karma.conf.js",
+            "main": "projects/example-app/src/test.ts",
+            "polyfills": "projects/example-app/src/polyfills.ts",
+            "tsConfig": "projects/example-app/tsconfig.spec.json",
+            "karmaConfig": "projects/example-app/karma.conf.js",
             "assets": [
-              "projects/mui-angular10-app/src/favicon.ico",
-              "projects/mui-angular10-app/src/assets"
+              "projects/example-app/src/favicon.ico",
+              "projects/example-app/src/assets"
             ],
             "styles": [
-              "projects/mui-angular10-app/src/styles.css",
+              "projects/example-app/src/styles.css",
               "dist/mui-angular/assets/styles/mui.css"
             ],
             "scripts": []
@@ -139,9 +139,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/mui-angular10-app/tsconfig.app.json",
-              "projects/mui-angular10-app/tsconfig.spec.json",
-              "projects/mui-angular10-app/e2e/tsconfig.json"
+              "projects/example-app/tsconfig.app.json",
+              "projects/example-app/tsconfig.spec.json",
+              "projects/example-app/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -151,12 +151,12 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "projects/mui-angular10-app/e2e/protractor.conf.js",
-            "devServerTarget": "mui-angular10-app:serve"
+            "protractorConfig": "projects/example-app/e2e/protractor.conf.js",
+            "devServerTarget": "example-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "mui-angular10-app:serve:production"
+              "devServerTarget": "example-app:serve:production"
             }
           }
         }
