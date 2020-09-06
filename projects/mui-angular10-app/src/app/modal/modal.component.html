@@ -19,6 +19,22 @@
 				<h1>Hello World 2</h1>
 				<p>Just click anywhere outside this dialog to close the modal.</p>
 			</mui-modal>
+
+			<h2>Template overlay</h2>
+			<mui-panel>
+				<mui-button color="primary" variant="raised" (click)="open(overlay)">Open</mui-button>
+				<ng-template #overlay>
+					<div>
+					  <p>A simple template based modal using a component with passed in values.</p>
+					  <p>Click a button or the background to close this dialog.</p>
+					  <mui-button variant="raised" (muiClick)="close($event)">Default</mui-button>
+					  <mui-button color="primary" variant="raised" (muiClick)="close($event)">Primary</mui-button>
+					  <mui-button color="accent" variant="raised" (muiClick)="close($event)">Accent</mui-button>
+					  <mui-button color="danger" variant="raised" (muiClick)="close($event)">Danger</mui-button>
+					  <mui-button color="dark" variant="raised" (muiClick)="close($event)">Dark</mui-button>
+					</div>
+				  </ng-template>
+			</mui-panel>
 		</mui-col>
 	</mui-row>
 </mui-container>

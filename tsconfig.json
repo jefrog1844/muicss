@@ -8,10 +8,10 @@
   "files": [],
   "references": [
     {
-      "path": "./projects/mui-angular10-lib/tsconfig.lib.json"
+      "path": "./projects/mui-angular/tsconfig.lib.json"
     },
     {
-      "path": "./projects/mui-angular10-lib/tsconfig.spec.json"
+      "path": "./projects/mui-angular/tsconfig.spec.json"
     },
     {
       "path": "./projects/mui-angular10-app/tsconfig.app.json"

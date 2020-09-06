@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MuiTabComponent } from 'mui-angular10-lib/tab';
+import { MuiTab } from 'mui-angular/tabs';
 
 @Component({
   selector: 'app-tab',
@@ -13,11 +13,11 @@ export class TabComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  select(tab: MuiTabComponent) {
+  select(tab: MuiTab) {
     console.log("Tab selected: ",tab.label);
   }
 
-  deselect(tab: MuiTabComponent) {
+  deselect(tab: MuiTab) {
     console.log("Tab deselected: ",tab.label);
   }
 

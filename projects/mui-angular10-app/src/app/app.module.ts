@@ -4,26 +4,27 @@ import { NgModule, ViewContainerRef } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 
-import {MuiAppbarModule } from 'mui-angular10-lib/appbar';
-import { MuiModalService } from 'mui-angular10-lib/modal';
-import { MuiButtonModule } from 'mui-angular10-lib/button';
-import { MuiCaretModule } from 'mui-angular10-lib/caret';
-import { MuiCheckboxModule } from 'mui-angular10-lib/checkbox';
-import { MuiColModule } from 'mui-angular10-lib/col';
-import { MuiContainerModule } from 'mui-angular10-lib/container';
-import { MuiDividerModule } from 'mui-angular10-lib/divider';
-import { MuiDropdownModule } from 'mui-angular10-lib/dropdown';
-import { MuiFormModule } from 'mui-angular10-lib/form';
-import { MuiInputModule } from 'mui-angular10-lib/input';
-import { MuiPanelModule } from 'mui-angular10-lib/panel';
-import { MuiRadioModule } from 'mui-angular10-lib/radio';
-import { MuiRowModule } from 'mui-angular10-lib/row';
-import { MuiSelectModule } from 'mui-angular10-lib/select';
-import { MuiTabModule } from 'mui-angular10-lib/tab';
-import { MuiTabsModule } from 'mui-angular10-lib/tabs';
-import { MuiTextareaModule } from 'mui-angular10-lib/textarea';
-import { MuiModalModule } from 'mui-angular10-lib/modal';
-import { MuiDirectivesModule } from 'mui-angular10-lib/directives';
+import {MuiAppbarModule } from 'mui-angular/appbar';
+import { MuiModalService } from 'mui-angular/modal';
+import { MuiButtonModule } from 'mui-angular/button';
+import { MuiCaretModule } from 'mui-angular/caret';
+import { MuiCheckboxModule } from 'mui-angular/checkbox';
+import { MuiColModule } from 'mui-angular/col';
+import { MuiContainerModule } from 'mui-angular/container';
+import { MuiDividerModule } from 'mui-angular/divider';
+import { MuiDropdownModule } from 'mui-angular/dropdown';
+import { MuiFormModule } from 'mui-angular/form';
+import { MuiInputModule } from 'mui-angular/input';
+import { MuiPanelModule } from 'mui-angular/panel';
+import { MuiRadioModule } from 'mui-angular/radio';
+import { MuiRowModule } from 'mui-angular/row';
+import { MuiSelectModule } from 'mui-angular/select';
+import { MuiTabsModule } from 'mui-angular/tabs';
+import { MuiTextareaModule } from 'mui-angular/textarea';
+import { MuiModalModule } from 'mui-angular/modal';
+import { MuiDirectivesModule } from 'mui-angular/directives';
+import {MuiOverlayModule} from 'mui-angular/overlay';
+import {MuiOverlayService} from 'mui-angular/overlay';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -73,13 +74,13 @@ import { ModalComponent } from './modal/modal.component';
     MuiRadioModule,
     MuiRowModule,
     MuiSelectModule,
-    MuiTabModule,
     MuiTabsModule,
     MuiTextareaModule,
     MuiModalModule,
-    MuiDirectivesModule
+    MuiDirectivesModule,
+    MuiOverlayModule
   ],
-  providers: [MuiModalService],
+  providers: [MuiModalService, MuiOverlayService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,9 +16,9 @@
       "dom"
     ],
     "paths": {
-      "mui-angular10-lib": [
-        "dist/mui-angular10-lib/mui-angular10-lib",
-        "dist/mui-angular10-lib"
+      "mui-angular": [
+        "dist/mui-angular/mui-angular",
+        "dist/mui-angular"
       ]
     }
   }

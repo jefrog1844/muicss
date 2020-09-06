@@ -3,38 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "mui-angular10-lib": {
+    "mui-angular": {
       "projectType": "library",
-      "root": "projects/mui-angular10-lib",
-      "sourceRoot": "projects/mui-angular10-lib/src",
+      "root": "projects/mui-angular",
+      "sourceRoot": "projects/mui-angular/src",
       "prefix": "mui",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/mui-angular10-lib/tsconfig.lib.json",
-            "project": "projects/mui-angular10-lib/ng-package.json"
+            "tsConfig": "projects/mui-angular/tsconfig.lib.json",
+            "project": "projects/mui-angular/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/mui-angular10-lib/tsconfig.lib.prod.json"
+              "tsConfig": "projects/mui-angular/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/mui-angular10-lib/src/test.ts",
-            "tsConfig": "projects/mui-angular10-lib/tsconfig.spec.json",
-            "karmaConfig": "projects/mui-angular10-lib/karma.conf.js"
+            "main": "projects/mui-angular/src/test.ts",
+            "tsConfig": "projects/mui-angular/tsconfig.spec.json",
+            "karmaConfig": "projects/mui-angular/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/mui-angular10-lib/tsconfig.lib.json",
-              "projects/mui-angular10-lib/tsconfig.spec.json"
+              "projects/mui-angular/tsconfig.lib.json",
+              "projects/mui-angular/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -65,7 +65,7 @@
             ],
             "styles": [
               "projects/mui-angular10-app/src/styles.css",
-              "dist/mui-angular10-lib/assets/styles/mui.css"
+              "dist/mui-angular/assets/styles/mui.css"
             ],
             "scripts": []
           },
@@ -130,7 +130,7 @@
             ],
             "styles": [
               "projects/mui-angular10-app/src/styles.css",
-              "dist/mui-angular10-lib/assets/styles/mui.css"
+              "dist/mui-angular/assets/styles/mui.css"
             ],
             "scripts": []
           }
@@ -162,5 +162,5 @@
         }
       }
     }},
-  "defaultProject": "mui-angular10-lib"
+  "defaultProject": "mui-angular"
 }
